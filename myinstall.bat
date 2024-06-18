@@ -107,8 +107,8 @@ if not exist !tags! (
     && type nul >!tags!
 )
 
-rem 下载 reinstall.sh
-if not exist reinstall.sh (
+rem 下载 myinstall.sh
+if not exist myinstall.sh (
     call :download %confhome%/myinstall.sh %~dp0myinstall.sh
 )
 
@@ -121,11 +121,11 @@ rem 在c盘根目录下执行 cygpath -ua . 会得到 /cygdrive/c，因此末尾
 for /f %%a in ('%SystemDrive%\cygwin\bin\cygpath -ua ./') do set thisdir=%%a
 
 rem 方法1
-%SystemDrive%\cygwin\bin\dos2unix -q '%thisdir%reinstall.sh'
-%SystemDrive%\cygwin\bin\bash -l -c '%thisdir%reinstall.sh !param!'
+%SystemDrive%\cygwin\bin\dos2unix -q '%thisdir%myinstall.sh'
+%SystemDrive%\cygwin\bin\bash -l -c '%thisdir%myinstall.sh !param!'
 
 rem 方法2
-rem %SystemDrive%\cygwin\bin\bash reinstall.sh %*
+rem %SystemDrive%\cygwin\bin\bash myinstall.sh %*
 rem 再在 reinstall.sh 里运行 source /etc/profile
 exit /b
 
